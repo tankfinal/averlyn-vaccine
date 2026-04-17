@@ -144,29 +144,51 @@
     `;
   }
 
+  function getVaccineDate(v) {
+    return v.done ? v.doneDate : v.scheduledDate;
+  }
+
+  function dateGroupLabel(dateStr) {
+    const d = new Date(dateStr);
+    return `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`;
+  }
+
   function renderTimeline(vaccines, nextVaccine) {
     const timeline = document.getElementById('timeline');
     const filtered = filterVaccines(vaccines, currentFilter);
 
-    // Group by ageMonths
+    // Split into dated and undated
+    const dated = filtered.filter(v => getVaccineDate(v));
+    const undated = filtered.filter(v => !getVaccineDate(v));
+
+    // Sort by actual date
+    dated.sort((a, b) => new Date(getVaccineDate(a)) - new Date(getVaccineDate(b)));
+
+    // Group by date
     const groups = new Map();
-    for (const v of filtered) {
-      const key = v.ageMonths;
+    for (const v of dated) {
+      const key = getVaccineDate(v);
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(v);
     }
 
-    // Sort groups by ageMonths
-    const sortedKeys = [...groups.keys()].sort((a, b) => a - b);
-
     let html = '';
-    for (const key of sortedKeys) {
-      const items = groups.get(key);
+    for (const [key, items] of groups) {
       html += `<div class="age-group">`;
-      html += `<div class="age-group-label">${ageLabel(key)}</div>`;
+      html += `<div class="age-group-label">${dateGroupLabel(key)}</div>`;
       for (const v of items) {
         const isNext = nextVaccine && v.id === nextVaccine.id;
         html += renderCard(v, isNext);
+      }
+      html += `</div>`;
+    }
+
+    // Undated vaccines at the end
+    if (undated.length > 0) {
+      html += `<div class="age-group">`;
+      html += `<div class="age-group-label">尚未排定</div>`;
+      for (const v of undated) {
+        html += renderCard(v, false);
       }
       html += `</div>`;
     }
