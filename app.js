@@ -36,11 +36,18 @@
     return `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}`;
   }
 
+  function formatPrice(price) {
+    return price.toLocaleString('zh-TW');
+  }
+
   function ageLabel(ageMonths) {
     if (ageMonths === 0) return '出生';
-    if (ageMonths < 12) return `${ageMonths} 個月`;
+    if (ageMonths < 1) return `${Math.round(ageMonths * 4.3)} 週`;
+    if (ageMonths < 12) {
+      return Number.isInteger(ageMonths) ? `${ageMonths} 個月` : `${ageMonths} 個月`;
+    }
     const y = Math.floor(ageMonths / 12);
-    const m = ageMonths % 12;
+    const m = Math.round(ageMonths % 12);
     if (m === 0) return `${y} 歲`;
     return `${y} 歲 ${m} 個月`;
   }
@@ -49,6 +56,7 @@
 
   function getStatus(v) {
     if (v.done) return 'done';
+    if (!v.scheduledDate) return 'optional';
     const scheduled = new Date(v.scheduledDate);
     scheduled.setHours(0, 0, 0, 0);
     if (scheduled < TODAY) return 'overdue';
@@ -57,7 +65,7 @@
 
   function findNextVaccine(vaccines) {
     const upcoming = vaccines
-      .filter(v => !v.done)
+      .filter(v => !v.done && v.scheduledDate)
       .sort((a, b) => new Date(a.scheduledDate) - new Date(b.scheduledDate));
     return upcoming.length > 0 ? upcoming[0] : null;
   }
@@ -74,24 +82,39 @@
 
   function renderCard(v, isNext) {
     const status = getStatus(v);
-    const dateStr = v.done
-      ? `施打日期: ${formatDate(v.doneDate)}`
-      : `預計日期: ${formatDate(v.scheduledDate)}`;
 
-    const statusBadge = status === 'done'
-      ? '<span class="badge badge-done">&#10003; 已完成</span>'
-      : status === 'overdue'
-        ? '<span class="badge badge-overdue">&#9888; 逾期</span>'
-        : '<span class="badge badge-upcoming">&#9711; 待施打</span>';
+    let dateStr;
+    if (v.done) {
+      dateStr = `施打日期: ${formatDate(v.doneDate)}`;
+    } else if (v.scheduledDate) {
+      dateStr = `預計日期: ${formatDate(v.scheduledDate)}`;
+    } else {
+      dateStr = '尚未排定日期（可諮詢醫師）';
+    }
+
+    let statusBadge;
+    if (status === 'done') {
+      statusBadge = '<span class="badge badge-done">&#10003; 已完成</span>';
+    } else if (status === 'overdue') {
+      statusBadge = '<span class="badge badge-overdue">&#9888; 逾期</span>';
+    } else if (status === 'optional') {
+      statusBadge = '<span class="badge badge-optional">&#9679; 可選</span>';
+    } else {
+      statusBadge = '<span class="badge badge-upcoming">&#9711; 待施打</span>';
+    }
 
     const typeBadge = v.type === 'public'
       ? '<span class="badge badge-public">公費</span>'
       : '<span class="badge badge-self">自費</span>';
 
+    const priceBadge = v.price
+      ? `<span class="badge badge-price">$${formatPrice(v.price)}</span>`
+      : '';
+
     const nextLabel = isNext ? '<span class="next-label">NEXT UP</span>' : '';
 
     let daysUntil = '';
-    if (!v.done) {
+    if (!v.done && v.scheduledDate) {
       const d = daysDiff(TODAY, new Date(v.scheduledDate));
       if (d > 0) daysUntil = ` (${d} 天後)`;
       else if (d === 0) daysUntil = ' (今天!)';
@@ -111,6 +134,7 @@
           <div class="vaccine-badges">
             ${statusBadge}
             ${typeBadge}
+            ${priceBadge}
           </div>
         </div>
         <div class="vaccine-detail">
@@ -161,7 +185,7 @@
     document.getElementById('statDone').textContent = done;
     document.getElementById('statUpcoming').textContent = upcoming;
 
-    if (nextVaccine) {
+    if (nextVaccine && nextVaccine.scheduledDate) {
       const d = daysDiff(TODAY, new Date(nextVaccine.scheduledDate));
       if (d > 0) {
         document.getElementById('statNext').textContent = `${d} 天`;

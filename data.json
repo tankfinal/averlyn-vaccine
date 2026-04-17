@@ -15,25 +15,16 @@
       "description": "出生24小時內施打，預防B型肝炎病毒感染。"
     },
     {
-      "id": "hepb-2",
-      "name": "B型肝炎第2劑",
-      "nameEn": "HepB #2",
-      "ageMonths": 1,
-      "type": "public",
+      "id": "hexaxim-1",
+      "name": "六合一第1劑",
+      "nameEn": "Hexaxim #1",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌、B型肝炎",
+      "ageMonths": 1.5,
+      "type": "self-paid",
       "done": true,
-      "doneDate": "2026-01-03",
-      "description": "出生滿1個月施打，持續建立B肝免疫力。"
-    },
-    {
-      "id": "dtap-ipv-hib-1",
-      "name": "五合一第1劑",
-      "nameEn": "DTaP-IPV-Hib #1",
-      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌",
-      "ageMonths": 2,
-      "type": "public",
-      "done": true,
-      "doneDate": "2026-02-03",
-      "description": "五合一疫苗涵蓋白喉、破傷風、非細胞性百日咳、不活化小兒麻痺及b型嗜血桿菌。"
+      "doneDate": "2026-01-14",
+      "price": 1900,
+      "description": "六合一疫苗取代公費五合一+B肝，減少寶寶打針次數。6週以上適用。"
     },
     {
       "id": "pcv13-1",
@@ -48,23 +39,25 @@
     {
       "id": "rota-1",
       "name": "輪狀病毒第1劑",
-      "nameEn": "Rotavirus #1",
+      "nameEn": "Rotateq #1",
       "ageMonths": 2,
       "type": "self-paid",
       "done": true,
       "doneDate": "2026-02-03",
-      "description": "口服疫苗，預防輪狀病毒引起的嚴重腸胃炎。建議2個月大開始接種。"
+      "price": 1800,
+      "description": "輪速停口服五價疫苗，預防輪狀病毒引起的嚴重腸胃炎。6週~8個月內投予三劑。"
     },
     {
-      "id": "dtap-ipv-hib-2",
-      "name": "五合一第2劑",
-      "nameEn": "DTaP-IPV-Hib #2",
-      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌",
+      "id": "hexaxim-2",
+      "name": "六合一第2劑",
+      "nameEn": "Hexaxim #2",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌、B型肝炎",
       "ageMonths": 4,
-      "type": "public",
+      "type": "self-paid",
       "done": true,
       "doneDate": "2026-04-03",
-      "description": "五合一疫苗第二劑，持續強化免疫保護。"
+      "price": 1900,
+      "description": "六合一疫苗第二劑，持續強化免疫保護。"
     },
     {
       "id": "pcv13-2",
@@ -79,12 +72,13 @@
     {
       "id": "rota-2",
       "name": "輪狀病毒第2劑",
-      "nameEn": "Rotavirus #2",
+      "nameEn": "Rotateq #2",
       "ageMonths": 4,
       "type": "self-paid",
       "done": true,
       "doneDate": "2026-04-03",
-      "description": "輪狀病毒第二劑，部分廠牌為最後一劑（2劑型）。"
+      "price": 1800,
+      "description": "輪速停第二劑，持續建立輪狀病毒免疫力。"
     },
     {
       "id": "bcg",
@@ -97,34 +91,115 @@
       "description": "預防結核病，建議出生滿5個月施打。接種後會形成小疤痕為正常反應。"
     },
     {
-      "id": "rota-3",
-      "name": "輪狀病毒第3劑",
-      "nameEn": "Rotavirus #3",
+      "id": "hexaxim-3",
+      "name": "六合一第3劑",
+      "nameEn": "Hexaxim #3",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌、B型肝炎",
       "ageMonths": 6,
       "type": "self-paid",
       "done": false,
       "scheduledDate": "2026-06-03",
-      "description": "3劑型輪狀病毒疫苗的最後一劑（若為2劑型則不需要此劑）。"
+      "price": 1900,
+      "description": "六合一疫苗第三劑，完成基礎系列接種（含B肝第三劑）。"
     },
     {
-      "id": "hepb-3",
-      "name": "B型肝炎第3劑",
-      "nameEn": "HepB #3",
+      "id": "rota-3",
+      "name": "輪狀病毒第3劑",
+      "nameEn": "Rotateq #3",
       "ageMonths": 6,
-      "type": "public",
+      "type": "self-paid",
       "done": false,
       "scheduledDate": "2026-06-03",
-      "description": "B肝疫苗第三劑，完成基礎免疫。"
+      "price": 1800,
+      "description": "輪速停第三劑（最後一劑），8個月內須完成。"
     },
     {
-      "id": "dtap-ipv-hib-3",
-      "name": "五合一第3劑",
-      "nameEn": "DTaP-IPV-Hib #3",
-      "ageMonths": 6,
-      "type": "public",
+      "id": "pcv-3-self",
+      "name": "肺炎鏈球菌第3劑（自費追加）",
+      "nameEn": "PCV #3 (self-paid)",
+      "ageMonths": 7,
+      "type": "self-paid",
       "done": false,
-      "scheduledDate": "2026-06-03",
-      "description": "五合一疫苗第三劑，完成基礎系列接種。"
+      "scheduledDate": "2026-07-03",
+      "price": 3800,
+      "description": "公費僅提供第1、2、4劑（2、4、12-15個月），自費可於6-8個月追加第3劑，加強保護力。13價/15價 3,800元，20價 4,350元。"
+    },
+    {
+      "id": "ev71-1",
+      "name": "腸病毒A71型第1劑",
+      "nameEn": "ENVACGEN #1",
+      "ageMonths": 5,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2026-05-17",
+      "price": 4300,
+      "description": "預防腸病毒A71型感染及可能引發之重症。2個月以上可施打，2歲以下共三劑，第1與第2劑間隔56天，第3劑為第一劑滿1年後。"
+    },
+    {
+      "id": "ev71-2",
+      "name": "腸病毒A71型第2劑",
+      "nameEn": "ENVACGEN #2",
+      "ageMonths": 7,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2026-07-12",
+      "price": 4300,
+      "description": "腸病毒A71第二劑，與第一劑間隔56天。"
+    },
+    {
+      "id": "ev71-3",
+      "name": "腸病毒A71型第3劑",
+      "nameEn": "ENVACGEN #3",
+      "ageMonths": 17,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2027-05-17",
+      "price": 4300,
+      "description": "腸病毒A71第三劑，為第一劑滿1年後施打。"
+    },
+    {
+      "id": "menb-1",
+      "name": "B型腦膜炎雙球菌第1劑",
+      "nameEn": "Bexsero #1",
+      "ageMonths": 2,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": null,
+      "price": 6000,
+      "description": "預防B型奈瑟氏腦膜炎雙球菌所引起的侵入性腦膜炎雙球菌病。2歲以下投予三劑。"
+    },
+    {
+      "id": "menb-2",
+      "name": "B型腦膜炎雙球菌第2劑",
+      "nameEn": "Bexsero #2",
+      "ageMonths": 4,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": null,
+      "price": 6000,
+      "description": "B型腦膜炎雙球菌第二劑。"
+    },
+    {
+      "id": "menb-3",
+      "name": "B型腦膜炎雙球菌第3劑",
+      "nameEn": "Bexsero #3",
+      "ageMonths": 6,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": null,
+      "price": 6000,
+      "description": "B型腦膜炎雙球菌第三劑（追加劑）。"
+    },
+    {
+      "id": "rsv",
+      "name": "呼吸道融合病毒抗體",
+      "nameEn": "Beyfortus (RSV)",
+      "ageMonths": 0,
+      "type": "self-paid",
+      "done": true,
+      "doneDate": "2026-03-17",
+      "price": 16000,
+      "description": "長效單株抗體，針對呼吸道融合病毒(RSV)，新生兒即適用，保護效果持續約半年。出生~1歲（2歲內高風險幼兒）。"
     },
     {
       "id": "flu-1",
@@ -165,17 +240,17 @@
       "type": "public",
       "done": false,
       "scheduledDate": "2026-12-03",
-      "description": "水痘疫苗為活性減毒疫苗，預防水痘病毒感染。"
+      "description": "水痘疫苗為活性減毒疫苗，預防水痘病毒感染。公費滿12個月第1劑。"
     },
     {
-      "id": "pcv13-3",
-      "name": "肺炎鏈球菌第3劑",
-      "nameEn": "PCV13 #3",
+      "id": "pcv13-4",
+      "name": "肺炎鏈球菌第4劑",
+      "nameEn": "PCV13 #4",
       "ageMonths": 12,
       "type": "public",
       "done": false,
       "scheduledDate": "2026-12-03",
-      "description": "PCV13追加劑，完成幼兒肺炎鏈球菌系列接種。"
+      "description": "PCV13公費第三劑（追加劑），12-15個月施打，完成幼兒肺炎鏈球菌系列接種。"
     },
     {
       "id": "hepa-1-self",
@@ -208,15 +283,16 @@
       "description": "與第一劑間隔2週，完成日本腦炎基礎免疫。"
     },
     {
-      "id": "dtap-ipv-hib-4",
-      "name": "五合一第4劑",
-      "nameEn": "DTaP-IPV-Hib #4",
-      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌",
+      "id": "hexaxim-4",
+      "name": "六合一第4劑",
+      "nameEn": "Hexaxim #4",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌、B型肝炎",
       "ageMonths": 18,
-      "type": "public",
+      "type": "self-paid",
       "done": false,
       "scheduledDate": "2027-06-03",
-      "description": "五合一疫苗追加劑，強化長期免疫保護。"
+      "price": 1900,
+      "description": "六合一疫苗追加劑（第四劑），強化長期免疫保護。"
     },
     {
       "id": "hepa-1",
@@ -247,6 +323,17 @@
       "done": false,
       "scheduledDate": "2028-06-03",
       "description": "A型肝炎第二劑，與第一劑間隔至少6個月，完成A肝免疫。"
+    },
+    {
+      "id": "varicella-2-self",
+      "name": "水痘第2劑（自費追加）",
+      "nameEn": "Varicella #2 (self-paid)",
+      "ageMonths": 54,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2030-06-03",
+      "price": 1800,
+      "description": "公費僅1劑，自費可於4-6歲追加第2劑。施打追加劑可保護至少到20歲，有效避免嚴重水痘症狀。"
     },
     {
       "id": "mmr-2",
