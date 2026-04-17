@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Averlyn's Vaccine Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="baby-name">Averlyn</h1>
+        <p class="baby-subtitle">Vaccine Tracker</p>
+        <div class="baby-info">
+          <span class="info-pill">
+            <span class="info-icon">&#x1F382;</span>
+            <span id="birthDate">2025-12-03</span>
+          </span>
+          <span class="info-pill">
+            <span class="info-icon">&#x1F476;</span>
+            <span id="ageDisplay"></span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats-bar">
+      <div class="stat">
+        <span class="stat-number" id="statDone">0</span>
+        <span class="stat-label">已完成</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" id="statUpcoming">0</span>
+        <span class="stat-label">待施打</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" id="statNext">—</span>
+        <span class="stat-label">下一劑倒數</span>
+      </div>
+    </section>
+
+    <!-- Filter -->
+    <section class="filter-bar">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="public">公費</button>
+      <button class="filter-btn" data-filter="self-paid">自費</button>
+      <button class="filter-btn" data-filter="done">已完成</button>
+      <button class="filter-btn" data-filter="upcoming">未施打</button>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline" id="timeline"></section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Made with love for Averlyn</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+{
+  "baby": {
+    "name": "Averlyn",
+    "birthDate": "2025-12-03"
+  },
+  "vaccines": [
+    {
+      "id": "hepb-1",
+      "name": "B型肝炎第1劑",
+      "nameEn": "HepB #1",
+      "ageMonths": 0,
+      "type": "public",
+      "done": true,
+      "doneDate": "2025-12-03",
+      "description": "出生24小時內施打，預防B型肝炎病毒感染。"
+    },
+    {
+      "id": "hepb-2",
+      "name": "B型肝炎第2劑",
+      "nameEn": "HepB #2",
+      "ageMonths": 1,
+      "type": "public",
+      "done": true,
+      "doneDate": "2026-01-03",
+      "description": "出生滿1個月施打，持續建立B肝免疫力。"
+    },
+    {
+      "id": "dtap-ipv-hib-1",
+      "name": "五合一第1劑",
+      "nameEn": "DTaP-IPV-Hib #1",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌",
+      "ageMonths": 2,
+      "type": "public",
+      "done": true,
+      "doneDate": "2026-02-03",
+      "description": "五合一疫苗涵蓋白喉、破傷風、非細胞性百日咳、不活化小兒麻痺及b型嗜血桿菌。"
+    },
+    {
+      "id": "pcv13-1",
+      "name": "肺炎鏈球菌第1劑",
+      "nameEn": "PCV13 #1",
+      "ageMonths": 2,
+      "type": "public",
+      "done": true,
+      "doneDate": "2026-02-03",
+      "description": "13價結合型肺炎鏈球菌疫苗，預防侵襲性肺炎鏈球菌感染。"
+    },
+    {
+      "id": "rota-1",
+      "name": "輪狀病毒第1劑",
+      "nameEn": "Rotavirus #1",
+      "ageMonths": 2,
+      "type": "self-paid",
+      "done": true,
+      "doneDate": "2026-02-03",
+      "description": "口服疫苗，預防輪狀病毒引起的嚴重腸胃炎。建議2個月大開始接種。"
+    },
+    {
+      "id": "dtap-ipv-hib-2",
+      "name": "五合一第2劑",
+      "nameEn": "DTaP-IPV-Hib #2",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌",
+      "ageMonths": 4,
+      "type": "public",
+      "done": true,
+      "doneDate": "2026-04-03",
+      "description": "五合一疫苗第二劑，持續強化免疫保護。"
+    },
+    {
+      "id": "pcv13-2",
+      "name": "肺炎鏈球菌第2劑",
+      "nameEn": "PCV13 #2",
+      "ageMonths": 4,
+      "type": "public",
+      "done": true,
+      "doneDate": "2026-04-03",
+      "description": "PCV13第二劑，加強肺炎鏈球菌免疫力。"
+    },
+    {
+      "id": "rota-2",
+      "name": "輪狀病毒第2劑",
+      "nameEn": "Rotavirus #2",
+      "ageMonths": 4,
+      "type": "self-paid",
+      "done": true,
+      "doneDate": "2026-04-03",
+      "description": "輪狀病毒第二劑，部分廠牌為最後一劑（2劑型）。"
+    },
+    {
+      "id": "bcg",
+      "name": "卡介苗",
+      "nameEn": "BCG",
+      "ageMonths": 5,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2026-05-03",
+      "description": "預防結核病，建議出生滿5個月施打。接種後會形成小疤痕為正常反應。"
+    },
+    {
+      "id": "rota-3",
+      "name": "輪狀病毒第3劑",
+      "nameEn": "Rotavirus #3",
+      "ageMonths": 6,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2026-06-03",
+      "description": "3劑型輪狀病毒疫苗的最後一劑（若為2劑型則不需要此劑）。"
+    },
+    {
+      "id": "hepb-3",
+      "name": "B型肝炎第3劑",
+      "nameEn": "HepB #3",
+      "ageMonths": 6,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2026-06-03",
+      "description": "B肝疫苗第三劑，完成基礎免疫。"
+    },
+    {
+      "id": "dtap-ipv-hib-3",
+      "name": "五合一第3劑",
+      "nameEn": "DTaP-IPV-Hib #3",
+      "ageMonths": 6,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2026-06-03",
+      "description": "五合一疫苗第三劑，完成基礎系列接種。"
+    },
+    {
+      "id": "flu-1",
+      "name": "流感疫苗第1劑",
+      "nameEn": "Influenza #1",
+      "ageMonths": 6,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2026-06-03",
+      "description": "滿6個月即可施打，首次需接種2劑（間隔4週）。每年流感季建議施打。"
+    },
+    {
+      "id": "flu-2",
+      "name": "流感疫苗第2劑",
+      "nameEn": "Influenza #2",
+      "ageMonths": 7,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2026-07-03",
+      "description": "首次接種流感疫苗需打2劑，間隔至少4週。"
+    },
+    {
+      "id": "mmr-1",
+      "name": "MMR第1劑",
+      "nameEn": "MMR #1",
+      "subtitle": "麻疹、腮腺炎、德國麻疹",
+      "ageMonths": 12,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2026-12-03",
+      "description": "麻疹腮腺炎德國麻疹混合疫苗，為活性減毒疫苗。"
+    },
+    {
+      "id": "varicella-1",
+      "name": "水痘第1劑",
+      "nameEn": "Varicella #1",
+      "ageMonths": 12,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2026-12-03",
+      "description": "水痘疫苗為活性減毒疫苗，預防水痘病毒感染。"
+    },
+    {
+      "id": "pcv13-3",
+      "name": "肺炎鏈球菌第3劑",
+      "nameEn": "PCV13 #3",
+      "ageMonths": 12,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2026-12-03",
+      "description": "PCV13追加劑，完成幼兒肺炎鏈球菌系列接種。"
+    },
+    {
+      "id": "hepa-1-self",
+      "name": "A型肝炎第1劑（自費提早）",
+      "nameEn": "HepA #1 (self-paid early)",
+      "ageMonths": 12,
+      "type": "self-paid",
+      "done": false,
+      "scheduledDate": "2026-12-03",
+      "description": "自費可於12個月提早施打，公費則於18個月。預防A型肝炎病毒感染。"
+    },
+    {
+      "id": "je-1",
+      "name": "日本腦炎第1劑",
+      "nameEn": "JE #1",
+      "ageMonths": 15,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2027-03-03",
+      "description": "日本腦炎疫苗第一劑，建議於每年3-5月（流行期前）施打。"
+    },
+    {
+      "id": "je-2",
+      "name": "日本腦炎第2劑",
+      "nameEn": "JE #2",
+      "ageMonths": 15,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2027-03-17",
+      "description": "與第一劑間隔2週，完成日本腦炎基礎免疫。"
+    },
+    {
+      "id": "dtap-ipv-hib-4",
+      "name": "五合一第4劑",
+      "nameEn": "DTaP-IPV-Hib #4",
+      "subtitle": "白喉、破傷風、百日咳、小兒麻痺、b型嗜血桿菌",
+      "ageMonths": 18,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2027-06-03",
+      "description": "五合一疫苗追加劑，強化長期免疫保護。"
+    },
+    {
+      "id": "hepa-1",
+      "name": "A型肝炎第1劑（公費）",
+      "nameEn": "HepA #1",
+      "ageMonths": 18,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2027-06-03",
+      "description": "公費A型肝炎疫苗第一劑（若已自費施打可跳過）。"
+    },
+    {
+      "id": "je-3",
+      "name": "日本腦炎第3劑",
+      "nameEn": "JE #3",
+      "ageMonths": 27,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2028-03-03",
+      "description": "日本腦炎第三劑追加，與第一劑間隔至少12個月。"
+    },
+    {
+      "id": "hepa-2",
+      "name": "A型肝炎第2劑",
+      "nameEn": "HepA #2",
+      "ageMonths": 30,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2028-06-03",
+      "description": "A型肝炎第二劑，與第一劑間隔至少6個月，完成A肝免疫。"
+    },
+    {
+      "id": "mmr-2",
+      "name": "MMR第2劑",
+      "nameEn": "MMR #2",
+      "subtitle": "麻疹、腮腺炎、德國麻疹",
+      "ageMonths": 60,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2030-12-03",
+      "description": "滿5歲追加第二劑MMR，強化長期保護力。"
+    },
+    {
+      "id": "je-4",
+      "name": "日本腦炎第4劑",
+      "nameEn": "JE #4",
+      "ageMonths": 60,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2030-12-03",
+      "description": "日本腦炎第四劑追加，國小入學前完成。"
+    },
+    {
+      "id": "tdap-ipv",
+      "name": "減量破傷風白喉百日咳及小兒麻痺",
+      "nameEn": "Tdap-IPV",
+      "ageMonths": 60,
+      "type": "public",
+      "done": false,
+      "scheduledDate": "2030-12-03",
+      "description": "國小入學前追加，含減量破傷風、白喉、百日咳及不活化小兒麻痺。"
+    }
+  ]
+}

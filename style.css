@@ -1,0 +1,399 @@
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #f8a4b8;
+  --pink-light: #fce4ec;
+  --pink-dark: #e91e63;
+  --cream: #fff8f0;
+  --green: #66bb6a;
+  --green-light: #e8f5e9;
+  --blue: #42a5f5;
+  --blue-light: #e3f2fd;
+  --orange: #ffa726;
+  --orange-light: #fff3e0;
+  --gray: #9e9e9e;
+  --gray-light: #f5f5f5;
+  --text: #424242;
+  --text-light: #757575;
+  --radius: 16px;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* === Header === */
+.header {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+
+.baby-name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--pink-dark);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.baby-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-top: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.baby-info {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.info-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+}
+
+.info-icon {
+  font-size: 1.1rem;
+}
+
+/* === Stats Bar === */
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat {
+  flex: 1;
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 8px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--pink-dark);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* === Filter Bar === */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-btn {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border: 2px solid var(--pink-light);
+  border-radius: 50px;
+  background: white;
+  color: var(--text-light);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--pink);
+  color: var(--pink-dark);
+}
+
+.filter-btn.active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: white;
+}
+
+/* === Timeline === */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--pink-light);
+  border-radius: 3px;
+}
+
+/* Age Group */
+.age-group {
+  margin-bottom: 32px;
+}
+
+.age-group-label {
+  position: relative;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pink-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  padding: 4px 0;
+}
+
+.age-group-label::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 11px;
+  background: var(--pink);
+  border: 3px solid var(--cream);
+  border-radius: 50%;
+}
+
+/* Vaccine Card */
+.vaccine-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vaccine-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.vaccine-card.done {
+  border-left: 4px solid var(--green);
+}
+
+.vaccine-card.upcoming {
+  border-left: 4px solid var(--orange);
+}
+
+.vaccine-card.overdue {
+  border-left: 4px solid #ef5350;
+}
+
+.vaccine-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vaccine-card-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.vaccine-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.vaccine-name-en {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.vaccine-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.vaccine-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.vaccine-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-done {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.badge-upcoming {
+  background: var(--orange-light);
+  color: var(--orange);
+}
+
+.badge-overdue {
+  background: #ffebee;
+  color: #ef5350;
+}
+
+.badge-public {
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+.badge-self {
+  background: #f3e5f5;
+  color: #ab47bc;
+}
+
+/* Card Detail (expandable) */
+.vaccine-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.vaccine-card.expanded .vaccine-detail {
+  max-height: 200px;
+  padding-top: 12px;
+}
+
+.vaccine-detail p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  padding-top: 12px;
+  border-top: 1px solid var(--gray-light);
+}
+
+/* Next vaccine highlight */
+.vaccine-card.next-up {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
+  border-left: 4px solid var(--orange);
+  box-shadow: 0 2px 16px rgba(255, 167, 38, 0.15);
+}
+
+.next-label {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 50px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 40px 0 32px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* === Responsive === */
+@media (max-width: 420px) {
+  .baby-name {
+    font-size: 2.2rem;
+  }
+
+  .stats-bar {
+    gap: 8px;
+  }
+
+  .stat {
+    padding: 12px 6px;
+  }
+
+  .stat-number {
+    font-size: 1.3rem;
+  }
+
+  .filter-bar {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+/* === Hidden utility === */
+.hidden {
+  display: none !important;
+}
