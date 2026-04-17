@@ -139,6 +139,8 @@
         </div>
         <div class="vaccine-detail">
           <p>${v.description}</p>
+          ${v.sideEffects ? `<div class="detail-section"><strong>副作用</strong><p>${v.sideEffects}</p></div>` : ''}
+          ${v.notes ? `<div class="detail-section"><strong>注意事項</strong><p>${v.notes}</p></div>` : ''}
         </div>
       </div>
     `;

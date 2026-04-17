@@ -339,16 +339,37 @@ body {
 }
 
 .vaccine-card.expanded .vaccine-detail {
-  max-height: 200px;
+  max-height: 600px;
   padding-top: 12px;
 }
 
-.vaccine-detail p {
+.vaccine-detail > p {
   font-size: 0.85rem;
   color: var(--text-light);
   line-height: 1.6;
   padding-top: 12px;
   border-top: 1px solid var(--gray-light);
+}
+
+.detail-section {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--gray-light);
+}
+
+.detail-section strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.detail-section p {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* Next vaccine highlight */
