@@ -21,8 +21,3 @@ export interface Baby {
   name: string;
   birth_date: string;             // "YYYY-MM-DD"
 }
-
-export interface VaccineUpdatePayload {
-  done: boolean;
-  done_date: string | null;       // "YYYY-MM-DD" or null
-}
