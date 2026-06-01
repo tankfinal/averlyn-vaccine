@@ -1,198 +1,85 @@
-# Averlyn Vaccine Tracker — Frontend
+# Averlyn Vaccine Tracker
 
-A private baby vaccine tracking web app for our daughter **Averlyn** (born 2025-12-03).
+A static website tracking our daughter **Averlyn**'s (born 2025-12-03) vaccination progress against Taiwan's recommended schedule (公費 + 自費).
 
-Tracks Taiwan's public (公費) and self-paid (自費) vaccine schedules. Family members can log in with Google to view the timeline, mark vaccines as done, and record vaccination dates.
-
-> Live: [averlyn-vaccine-fe.vercel.app](https://averlyn-vaccine-fe.vercel.app)
+> Live: [tankfinal.github.io/averlyn-vaccine](https://tankfinal.github.io/averlyn-vaccine/)
 
 ## About
 
-This project was born from a simple need: keeping track of Averlyn's vaccination schedule following Taiwan's recommended timeline. What started as a static HTML page on GitHub Pages evolved into a full-stack application when we wanted to:
-
-1. **Record actual vaccination dates** — mark vaccines as done and input the date
-2. **Share securely with family** — only two Google accounts can access (wife + me)
-3. **Edit from any device** — mobile-friendly, data persisted in the cloud
+Started as a static HTML page on GitHub Pages, briefly grew a FastAPI + Supabase backend so it could be edited from any device, and is now back to a pure static site (2026-06). The 36 vaccine records — including which were already done and when — are baked into `src/data/` at build time. No backend, no login, no database calls from the browser.
 
 ### Features
 
-- View all 36 vaccines in a timeline grouped by scheduled date
+- View all 36 vaccines in a timeline grouped by date
 - Filter by: all / done / upcoming / overdue
 - Stats bar showing completion progress and next vaccine countdown
-- Mark vaccines as done/undo with date picker
-- "Last updated" timestamp on edited records
-- Google OAuth login restricted to whitelisted emails only
-- Pink/cream theme with Quicksand font
-
-### How It Was Built
-
-This project was developed using **SDD (Spec-Driven Development)** with an [OpenSpec](https://github.com/tankfinal/averlyn-vaccine-be/blob/main/docs/openspec.md) document that defined the full system design before any code was written. The spec covers database schema, API endpoints, component tree, auth flow, and acceptance criteria.
-
-The original static site data (36 vaccine records with actual vaccination dates and notes) was migrated to Supabase PostgreSQL via a one-time migration script.
+- "Last updated" date in the header
 
 ## Architecture
 
 ```
-                         Averlyn Vaccine Tracker — System Architecture
-
-  +-----------+        +------------------+        +-------------------+
-  |  Browser  | -----> |   Vercel (CDN)   | -----> |   Static Assets   |
-  |  (React)  |        |   SPA Hosting    |        |   index.html/JS   |
-  +-----------+        +------------------+        +-------------------+
-       |
-       |  1. Google Login (OAuth implicit flow)
-       v
-  +--------------------+       +---------------------+       +-----------------+
-  | Supabase Auth      | <---> | Google Cloud OAuth  |       | Google Account  |
-  | (session + token)  |       | (Client ID/Secret)  | <---> | (user login)    |
-  +--------------------+       +---------------------+       +-----------------+
-       |
-       |  2. Bearer token in Authorization header
-       v
-  +--------------------+       +---------------------+
-  | Render (Backend)   | <---> | Supabase PostgreSQL |
-  | FastAPI + Uvicorn  |       | (vaccines, baby)    |
-  +--------------------+       +---------------------+
-       |
-       |  3. auth.get_user(token) to verify
-       v
-  +--------------------+
-  | Supabase Auth API  |
-  | (token validation) |
-  +--------------------+
++-----------+        +------------------+        +-------------------+
+|  Browser  | -----> |   Vercel (CDN)   | -----> |   Static Assets   |
+|  (React)  |        |   SPA Hosting    |        |   index.html/JS   |
++-----------+        +------------------+        +-------------------+
 ```
 
-## Auth Flow
-
-```
-  User                Browser              Supabase Auth         Google            Backend API
-   |                    |                      |                    |                   |
-   |  Click Login       |                      |                    |                   |
-   |------------------->|                      |                    |                   |
-   |                    |  signInWithOAuth()   |                    |                   |
-   |                    |--------------------->|                    |                   |
-   |                    |                      |  OAuth redirect    |                   |
-   |                    |                      |------------------->|                   |
-   |                    |                      |                    |                   |
-   |                    |        Google consent screen              |                   |
-   |                    |<-----------------------------------------|                   |
-   |  Enter credentials |                      |                    |                   |
-   |------------------------------------------->                    |                   |
-   |                    |                      |  Auth code         |                   |
-   |                    |                      |<-------------------|                   |
-   |                    |  Redirect with       |                    |                   |
-   |                    |  #access_token       |                    |                   |
-   |                    |<---------------------|                    |                   |
-   |                    |                      |                    |                   |
-   |                    |  detectSessionInUrl  |                    |                   |
-   |                    |  (auto parse token)  |                    |                   |
-   |                    |                      |                    |                   |
-   |                    |  GET /api/vaccines (Bearer token)         |                   |
-   |                    |---------------------------------------------------------->    |
-   |                    |                      |                    |  get_user(token)  |
-   |                    |                      |<----------------------------------- ---|
-   |                    |                      |  user verified     |                   |
-   |                    |                      |----------------------------------->    |
-   |                    |                      |                    |  email whitelist  |
-   |                    |                      |                    |  check + respond  |
-   |                    |  Vaccine data        |                    |                   |
-   |                    |<----------------------------------------------------------|   |
-   |  Show vaccines     |                      |                    |                   |
-   |<-------------------|                      |                    |                   |
-```
+That's it. Everything below `dist/` is shipped as-is to a CDN.
 
 ## Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | Framework | React 19 + TypeScript | UI |
-| Build | Vite 8 | Dev server + bundler |
-| Routing | React Router 7 | SPA routing |
-| Server State | TanStack Query 5 | API data fetching + cache |
-| HTTP | Axios | API client with auth interceptor |
-| Auth | Supabase JS (implicit flow) | Google OAuth + session |
+| Build | Vite 8 | Bundler |
 | Deploy | Vercel | Static hosting + CDN |
 
 ## Project Structure
 
 ```
 src/
-├── main.tsx                  # Entry point
-├── App.tsx                   # Provider setup (QueryClient, AuthProvider)
-├── MainPage.tsx              # Route orchestrator (login/denied/main view)
-├── api/
-│   └── client.ts             # Axios instance + Bearer token interceptor
-├── auth/
-│   ├── supabaseClient.ts     # Supabase client (implicit flow + detectSessionInUrl)
-│   ├── AuthProvider.tsx       # Auth context (session, signIn, signOut)
-│   └── AuthCallback.tsx       # OAuth callback handler (legacy, unused)
+├── main.tsx
+├── App.tsx
+├── MainPage.tsx
 ├── components/
-│   ├── LoginPage.tsx          # Google login button
-│   ├── AccessDenied.tsx       # 403 page for unauthorized emails
-│   ├── Header.tsx             # App header with baby name + age
-│   ├── StatsBar.tsx           # Vaccine completion stats
-│   ├── FilterBar.tsx          # Filter: all / done / upcoming / overdue
-│   ├── Timeline.tsx           # Grouped vaccine timeline
-│   ├── VaccineCard.tsx        # Individual vaccine card
-│   ├── VaccineEditModal.tsx   # Edit modal (mark done, set date)
-│   └── Footer.tsx             # App footer
-├── hooks/
-│   ├── useAuth.ts             # Auth context hook
-│   ├── useBaby.ts             # GET /api/baby (enabled: !!session)
-│   └── useVaccines.ts         # GET/PATCH /api/vaccines (enabled: !!session)
+│   ├── Header.tsx        # Baby name + age + "last updated"
+│   ├── StatsBar.tsx
+│   ├── FilterBar.tsx
+│   ├── Timeline.tsx
+│   ├── VaccineCard.tsx
+│   └── Footer.tsx
+├── data/
+│   ├── baby.ts           # Baked-in baby record
+│   └── vaccines.ts       # Baked-in 36 vaccine records
 ├── styles/
-│   └── index.css              # Full CSS (pink/cream theme, Quicksand font)
+│   └── index.css
 ├── types/
-│   └── index.ts               # Vaccine, Baby, VaccineUpdatePayload types
+│   └── index.ts
 └── utils/
-    ├── date.ts                # Age calculation, date formatting
-    └── vaccine.ts             # Status logic, filtering, next vaccine finder
+    ├── date.ts
+    └── vaccine.ts
 ```
 
 ## Local Development
 
 ```bash
-# Install
 npm install
-
-# Set env vars
-cp .env.example .env
-# Fill in VITE_API_URL, VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY
-
-# Dev server
 npm run dev        # http://localhost:5173
-
-# Type check + Build
-npm run build
+npm run build      # tsc + vite build
 ```
 
-### Environment Variables
+No `.env` needed.
 
-| Variable | Example | Note |
-|----------|---------|------|
-| `VITE_API_URL` | `http://localhost:8000/api` | Backend API base URL |
-| `VITE_SUPABASE_URL` | `https://xxx.supabase.co` | Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | `eyJhbG...` | **Must use Legacy format** |
+## Updating the data
 
-## Deploy to Vercel
+Open `src/data/vaccines.ts`, change `done` / `done_date` fields, update `LAST_UPDATED` in `src/components/Header.tsx`, commit, push — GitHub Pages redeploys.
 
-1. Connect GitHub repo `tankfinal/averlyn-vaccine-fe`
-2. Set environment variables in Vercel Dashboard
-3. Auto-deploys on push to `main`
+## Deploy to GitHub Pages
 
-`vercel.json` handles SPA routing:
-```json
-{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
-```
+Push to `main` → `.github/workflows/deploy.yml` runs `npm ci && npm run build` and publishes `dist/` to GitHub Pages.
 
-## OpenSpec
+One-time setup (GitHub repo → Settings → Pages):
+- **Source**: GitHub Actions
+- URL will be: `https://tankfinal.github.io/averlyn-vaccine/`
 
-This project's full-stack design spec (database schema, API endpoints, auth flow, component tree, acceptance criteria) is maintained as a shared OpenSpec in the backend repo:
-
-- [docs/openspec.md](https://github.com/tankfinal/averlyn-vaccine-be/blob/main/docs/openspec.md)
-
-Frontend-specific sections: §4.3 (React Frontend), §4.3.5 (Auth Flow), §6.2 (Routes), §6.4-6.5 (CSS/Logic Migration).
-
-## Related
-
-- Backend: [averlyn-vaccine-be](https://github.com/tankfinal/averlyn-vaccine-be)
+`vite.config.ts` sets `base: "/averlyn-vaccine/"` so assets resolve under the sub-path.

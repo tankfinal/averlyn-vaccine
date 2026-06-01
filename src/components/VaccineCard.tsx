@@ -6,16 +6,9 @@ import { formatDate, formatPrice, formatDateTime } from "../utils/date";
 interface VaccineCardProps {
   vaccine: Vaccine;
   isNext: boolean;
-  isAuthenticated: boolean;
-  onEdit: (vaccine: Vaccine) => void;
 }
 
-export function VaccineCard({
-  vaccine,
-  isNext,
-  isAuthenticated,
-  onEdit,
-}: VaccineCardProps) {
+export function VaccineCard({ vaccine, isNext }: VaccineCardProps) {
   const [expanded, setExpanded] = useState(false);
   const status = getStatus(vaccine);
   const daysUntil = getDaysUntilText(vaccine);
@@ -58,11 +51,6 @@ export function VaccineCard({
     setExpanded((prev) => !prev);
   };
 
-  const handleEditClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onEdit(vaccine);
-  };
-
   return (
     <div
       className={`vaccine-card ${status}${isNext ? " next-up" : ""}${expanded ? " expanded" : ""}`}
@@ -90,15 +78,6 @@ export function VaccineCard({
           {statusBadge}
           {typeBadge}
           {priceBadge}
-          {isAuthenticated && (
-            <button
-              className="edit-btn"
-              onClick={handleEditClick}
-              title={"\u7DE8\u8F2F"}
-            >
-              {"\u270F\uFE0F"}
-            </button>
-          )}
         </div>
       </div>
       <div className="vaccine-detail">

@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
+// GitHub Pages project page: https://tankfinal.github.io/averlyn-vaccine/
+// — must set base so assets resolve under the sub-path.
 export default defineConfig({
   plugins: [react()],
-})
+  base: "/averlyn-vaccine/",
+});

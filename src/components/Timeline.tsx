@@ -11,16 +11,9 @@ import { VaccineCard } from "./VaccineCard";
 interface TimelineProps {
   vaccines: Vaccine[];
   currentFilter: FilterType;
-  isAuthenticated: boolean;
-  onEdit: (vaccine: Vaccine) => void;
 }
 
-export function Timeline({
-  vaccines,
-  currentFilter,
-  isAuthenticated,
-  onEdit,
-}: TimelineProps) {
+export function Timeline({ vaccines, currentFilter }: TimelineProps) {
   const filtered = filterVaccines(vaccines, currentFilter);
   const nextVaccine = findNextVaccine(vaccines);
 
@@ -69,8 +62,6 @@ export function Timeline({
               key={v.id}
               vaccine={v}
               isNext={nextVaccine?.id === v.id}
-              isAuthenticated={isAuthenticated}
-              onEdit={onEdit}
             />
           ))}
         </div>
@@ -81,13 +72,7 @@ export function Timeline({
             {"\u5C1A\u672A\u6392\u5B9A"}
           </div>
           {undated.map((v) => (
-            <VaccineCard
-              key={v.id}
-              vaccine={v}
-              isNext={false}
-              isAuthenticated={isAuthenticated}
-              onEdit={onEdit}
-            />
+            <VaccineCard key={v.id} vaccine={v} isNext={false} />
           ))}
         </div>
       )}
