@@ -1,7 +1,7 @@
 import { baby } from "../data/baby";
 import { formatAge, formatDate } from "../utils/date";
 
-const LAST_UPDATED = "2026-06-01";
+const LAST_UPDATED = "2026-06-03";
 
 export function Header() {
   const birthDate = new Date(baby.birth_date);
